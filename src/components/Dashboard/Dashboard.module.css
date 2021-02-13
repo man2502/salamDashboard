@@ -1,0 +1,212 @@
+
+.wrapper{
+    position: relative;
+}
+
+
+
+/* components parametr */
+.dashboardWrapper{
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.dashboardWrapper, 
+.largeDashboardWrapperFirst,
+.largeDashboardWrapperSecond ,
+.largeDashboardWrapperThird  {
+    padding: 2%;
+    position: relative;
+    
+}
+
+.dashboardWrapper::before, 
+.largeDashboardWrapperFirst::before,
+.largeDashboardWrapperSecond::before,
+.largeDashboardWrapperThird::before {
+    background-color: #005FF9;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+/* .largeDashboardWrapperFirst,
+.largeDashboardWrapperSecond,
+.largeDashboardWrapperThird .dashboard{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;   
+} */
+
+.dashboardWrapper:hover::before {
+    opacity: 1;
+    cursor: pointer;
+}
+.dashboard {
+    z-index: 2;
+   position: relative;
+    /* outline: 2px solid red; */
+}
+
+
+
+.reverseAnim {
+    animation-direction: reverse!important;
+}
+
+
+/* MainGraphic component */
+
+.largeDashboardWrapperFirst{
+    width: 100%;
+}
+.largeDashboardWrapperFirst::before {
+    opacity: 1;
+    z-index: 10;
+    animation: blocksAnim1 1s linear;
+    transform: scale(1.55, 3) translateX(-12%) translateY(16%);
+    
+}
+
+
+.largeDashboardWrapperFirst .dashboard {
+    z-index: 20;
+    animation: ContentAnim1 1s linear;
+    transform: translateX(-15%) scale(1.49) translateY(40%);
+    
+}
+
+.largeDashboardWrapperFirst .dashboard .mainGraphicContent
+{
+    transform: translateX(3%);
+    animation: miniAnim1 1s linear;
+}
+
+@keyframes ContentAnim1 {
+    from {
+        transform: translateX(0) scale(1) translateY(0);
+    }
+    to {
+        transform: translateX(-15%) scale(1.49) translateY(40%)
+    }
+}
+
+@keyframes blocksAnim1 {
+    from {
+        transform: scale(1, 1) translateX(0) translateY(0)
+    }
+    to {
+        transform: scale(1.55, 3) translateX(-12%) translateY(16%);
+    }
+}
+
+@keyframes miniAnim1 {
+    from {
+        transform: translateX(0) 
+    }
+    to {
+        transform: translateX(3%)
+    }
+}
+
+
+
+/* usersCount */
+.largeDashboardWrapperSecond{
+    width: 100%;
+}
+.largeDashboardWrapperSecond::before {
+    opacity: 1;
+    z-index: 10;
+    animation: blocksAnim2 1s linear;
+    transform: scale(1.55, 4.6) translateX(-12%) translateY(-12%);
+    
+}
+
+
+.largeDashboardWrapperSecond .dashboard {
+    z-index: 20;
+    animation: ContentAnim2 1s linear;
+    transform: translateX(-10.5%) scale(1.49) translateY(-50%);
+    
+}
+
+.largeDashboardWrapperSecond .dashboard h1{
+    font-size: 110px;
+    animation: ContentAnim2h1 1s linear;
+}
+
+@keyframes ContentAnim2 {
+    from {
+        transform: translateX(0) scale(1) translateY(0);
+    }
+    to {
+        transform: translateX(-10.5%) scale(1.49) translateY(-50%)
+    }
+}
+
+@keyframes blocksAnim2 {
+    from {
+        transform: scale(1, 1) translateX(0) translateY(0)
+    }
+    to {
+        transform: scale(1.55, 4.6) translateX(-12%) translateY(-12%);
+    }
+}
+
+@keyframes ContentAnim2h1 {
+    from {
+        font-size: 72px;
+    }
+    to {
+        font-size: 110px;
+    }
+}
+
+
+
+/* UserDetail */
+
+.largeDashboardWrapperThird{
+    width: 100%;
+}
+.largeDashboardWrapperThird::before {
+    opacity: 1;
+    z-index: 10;
+    animation: blocksAnim3 1s linear;
+    transform: scale(1.55, 6) translateX(-12%) translateY(-33%);
+    
+}
+
+
+.largeDashboardWrapperThird .dashboard {
+    z-index: 20;
+    animation: ContentAnim3 1s linear;
+    transform: translateX(-16%) scale(1.49) translateY(-210%);
+    
+}
+
+@keyframes ContentAnim3 {
+    from {
+        transform: translateX(-2%) scale(1) translateY(0);
+    }
+    to {
+        transform: translateX(-16%) scale(1.49) translateY(-210%)
+    }
+}
+
+@keyframes blocksAnim3 {
+    from {
+        transform: scale(1, 1) translateX(0) translateY(0)
+    }
+    to {
+        transform: scale(1.55, 6) translateX(-12%) translateY(-33%);
+    }
+}

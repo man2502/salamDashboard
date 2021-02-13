@@ -1,0 +1,42 @@
+
+
+.wrapper{
+    position: relative;
+    display: inline-block;
+    padding: 2%;
+    padding-bottom: 3%;
+}
+
+.dropdownTitle{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dropdownToggle{
+    cursor: pointer;
+    text-transform: uppercase;
+    border-bottom: 1px solid #fff;
+    margin-left: 5px;
+}
+
+
+
+.dropdownMenu{
+    position: absolute;
+    background-color:#005ff9;
+    margin-top: 10px;
+    border-radius: 4px;
+    z-index: 15;
+    right: -8%;
+    border: 1px solid #fff
+}
+
+.dropdownItem{
+    padding: 5px;
+    
+}
+
+.dropdownItem:hover{
+    background:#27B1FE;
+    cursor: pointer;
+}

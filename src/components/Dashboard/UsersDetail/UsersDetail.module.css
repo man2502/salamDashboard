@@ -1,0 +1,18 @@
+.content{
+    transform: translateX(-2%);
+    
+}
+
+
+.mainTitle{
+    color: #fff;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.secondaryTitle{
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+

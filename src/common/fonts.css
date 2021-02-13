@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Pt_Root_Ui';
+    font-style: normal;
+    src: url('./../utils/fonts/PT-Root-UI_Light.ttf') format('trueType')
+}
+@font-face {
+    font-family: 'Pt_Root_Ui';
+    font-style: bold;
+    src: url('./../utils/fonts/PT-Root-UI_Regular.ttf') format('trueType')
+}

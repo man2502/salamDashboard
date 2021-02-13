@@ -1,0 +1,15 @@
+.content{
+    padding-left: 10%;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    margin-left: -2%;
+}
+
+.footer span{
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+}
