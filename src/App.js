@@ -1,13 +1,17 @@
 import React from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Col, Container } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row'
-import { useState } from 'react';
 import { Route } from 'react-router-dom';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import Sidebar from './components/Sidebar/Sidebar';
 import './common/fonts.css'
+import { withSuspense } from "./hoc/withSuspens";
+
+
+
+const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"))
 
 const App = () => {
   return (
@@ -16,7 +20,8 @@ const App = () => {
         <Row>
           <Col sm={{ order: 2 }} lg={9} md={9}>
             <div className="App-content">
-              <Route path='/dashboard' render={() =><DashboardContainer/>} />
+              <Route path='/dashboard' render={() => <DashboardContainer />} />
+              <Route path='/users' render={withSuspense(UsersContainer)} />
             </div>
           </Col>
 

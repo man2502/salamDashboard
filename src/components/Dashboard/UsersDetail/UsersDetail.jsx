@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import { Row, Col } from "react-bootstrap";
+import { Spring } from "react-spring/renderprops";
 import styles from "./../Dashboard.module.css"
 import s from "./UsersDetail.module.css"
-
+ 
 const UsersDetail = (props) => {
     const [expandMode, setExpandMode] = useState(false);
     const show = () => {
@@ -10,7 +11,6 @@ const UsersDetail = (props) => {
     }
 
     const getDate = () => {
-
         let newDate = new Date()
         let date = newDate.getDate()
         let month = newDate.getMonth()
@@ -27,11 +27,18 @@ const UsersDetail = (props) => {
         { id: 1, fullName: "Online Now", name: "Online", color: "#FF9E01", description: "maximum online for range" },
         { id: 2, fullName: "New Users", name: "New", color: "#27FFD8", description: "new registered users for range" }
     ]
-    const calcheight = ()=>{
-        return(document.documentElement.clientHeight*16/100)
+    const calcheight = () => {
+        return (document.documentElement.clientHeight * 16 / 100)
     }
+
+    const graphicData = [
+        props.graphicScale.data[props.graphicScale.data.length - 1].pv,
+        props.graphicScale.data[props.graphicScale.data.length - 1].uv,
+        props.graphicScale.data[props.graphicScale.data.length - 1].amt
+
+    ]
     return (
-        <div onClick={() => { show() }} style={{ height:  calcheight()}} className={expandMode ? styles.largeDashboardWrapperThird : styles.dashboardWrapper}>{/**/}
+        <div onClick={() => { show() }} style={{ height: calcheight() }} className={expandMode ? styles.largeDashboardWrapperThird : styles.dashboardWrapper}>{/**/}
             <div className={styles.dashboard + " " + s.content}>
                 <Row >
                     <Col lg={3} md={3}>
@@ -39,7 +46,7 @@ const UsersDetail = (props) => {
                             <Col>
                                 <div style={{ textAlign: "center" }}>
                                     <div className={s.mainTitle}>{getDate().date}</div>
-                                    <div style={{letterSpacing: "1px",textTransform:"uppercase"}} className="titleSmall">{getDate().currentMonth}</div>
+                                    <div style={{ letterSpacing: "1px", textTransform: "uppercase" }} className="titleSmall">{getDate().currentMonth}</div>
                                 </div>
                             </Col>
                             <Col>
@@ -53,10 +60,15 @@ const UsersDetail = (props) => {
                             {dashboardInfo.map(p => {
                                 return (
                                     <Col lg={4} md={4} className={s.infoItem}>
-                                        <div className={s.infoItemWrapper}>
-                                            <div className={s.mainTitle}>51515151</div>
-                                            <div className={s.secondaryTitle + " "+ "titleSmall"}>{p.fullName}</div>
-                                        </div>
+                                        <Spring
+                                            config={{ duration: 1000 }}
+                                            from={{ number: 0 }}
+                                            to={{ number: graphicData[p.id] }}>
+                                            {anim => <div className={s.infoItemWrapper}>
+                                                <div className={s.mainTitle}>{anim.number.toFixed()}</div>
+                                                <div className={s.secondaryTitle + " " + "titleSmall"}>{p.fullName}</div>
+                                            </div>}
+                                        </Spring>
                                     </Col>
                                 )
                             })}

@@ -33,7 +33,10 @@ const MainGraphic = (props) => {
                     </div>
                 </div>
                 <div onClick={() => { show() }}>
-                    <Graphic graphicScale ={props.graphicScale} graphicData={props.graphicData} expandMode={expandMode} />
+                    <Graphic 
+                        graphicScale ={props.graphicScale} 
+                        graphicData={props.graphicData} 
+                        expandMode={expandMode} />
                 </div>
             </div>
         </div>

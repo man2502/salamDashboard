@@ -14,6 +14,7 @@ const UsersCount = (props) => {
     const calcheight = () => {
         return (document.documentElement.clientHeight * 20 / 100)
     }
+    
     return (
         <div onClick={() => { show() }} style={{ height: calcheight() }} className={expandMode ? styles.largeDashboardWrapperSecond : styles.dashboardWrapper}>
             <div className={styles.dashboard}>
@@ -27,7 +28,7 @@ const UsersCount = (props) => {
                                 <Spring
                                     config ={{duration: 1000}}
                                     from={{ number: 0 }}
-                                    to={{ number: 15658 }}>
+                                    to={{ number: props.graphicScale.data[props.graphicScale.data.length-1].uv }}>
                                     {anim => <h1>{anim.number.toFixed()}</h1>}
                                 </Spring>
                             </div>

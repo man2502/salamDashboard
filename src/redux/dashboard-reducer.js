@@ -1,5 +1,7 @@
-const SET_GRAPHIC_SCALE = "SET_GRAPHIC_SCALE"
+import { dashboardAPI } from "../api/api";
 
+const SET_GRAPHIC_SCALE = "SET_GRAPHIC_SCALE"
+const SET_ACTIVE_GRAPHIC_SCALE = "SET_ACTIVE_GRAPHIC_SCALE"
 
 const week = [
     {
@@ -62,16 +64,16 @@ const year = [
     {
         name: 'Dec', uv: 6000, pv: 1398, amt: 2210,
     },
-    
+
 ]
 
-const graphicScale= [
-    {name:"Year", data:year},
-    {name:"Week", data:week}
+const graphicScale = [
+    { name: "Year", data: year },
+    { name: "Week", data: week }
 ]
 
 const initialState = {
-    dashboardCategory : [
+    dashboardCategory: [
         { id: 0, fullName: "Users Summary", name: "Overall", color: "#F25DE3", description: "Total quantity for range" },
         { id: 1, fullName: "Online Now", name: "Online", color: "#FF9E01", description: "Maximum online for range" },
         { id: 2, fullName: "New Users", name: "New", color: "#27FFD8", description: "New registered users for range" }
@@ -81,19 +83,38 @@ const initialState = {
 }
 
 
-export const setScale = (scale) =>({type: SET_GRAPHIC_SCALE, scale}) 
+export const setScale = (scale) => ({ type: SET_ACTIVE_GRAPHIC_SCALE, scale })
+function setGraphicData(data) {
+    return ({ type: SET_GRAPHIC_SCALE, data });
+}
 
 
-export default function dashboardReducer  (state = initialState, action){
-    switch(action.type){
+export default function dashboardReducer(state = initialState, action) {
+    switch (action.type) {
+        case SET_ACTIVE_GRAPHIC_SCALE:
+            return { ...state, activeGraphicScale: action.scale }
         case SET_GRAPHIC_SCALE:
-            return{...state, activeGraphicScale: action.scale}
+            return {
+                ...state,
+                graphicScale: action.data
+            }
 
-        default :
+        default:
             return state
     }
 }
 
 
-
-
+export const getUsersDataThunk = () => {
+    return async dispatch => {
+        try {
+            const response = await dashboardAPI.getGraphicData()
+            if (response.status == 1) {
+                dispatch(setGraphicData(response.data))
+            }
+        }
+        catch (e) {
+            console.log(e.message)
+        }
+    }
+}

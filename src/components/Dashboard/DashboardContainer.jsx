@@ -3,6 +3,7 @@ import Dashboard from "./Dashboard"
 import { connect } from "react-redux"
 import {setScale} from "./../../redux/dashboard-reducer"
 class DashboardContainer extends React.Component {
+
     render(){
 
     return(
